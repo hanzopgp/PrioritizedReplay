@@ -4,6 +4,7 @@ Prioritized memory access explains planning and hippocampal replay
 --> Hippocampal replay: Phenomenon observed in rats, mice, cats, monkeys... During sleep or awake rest, replay refers to the re-occurrence of a sequence of cell activations that also occurred during activity, but the replay has a much faster time scale. It may be in the same order, or in reverse. Cases were also found where a sequence of activations occurs before the actual activity, but it is still the same sequence
 
 ===================================================================================================
+===================================================================================================
 
 ABSTRACT:
 
@@ -36,6 +37,7 @@ ABSTRACT:
 * Craving: a powerful desire for something
 
 ===================================================================================================
+===================================================================================================
 
 INTRODUCTION:
 
@@ -58,7 +60,7 @@ INTRODUCTION:
 	--> effects of experience
 - "However, the brain may resort to different biological mechanisms to propagate value along replayed trajectories. The present work aims only to expose the principles governing how such mechanisms should behave."
 
-
+===================================================================================================
 ===================================================================================================
 
 RESULTS:
@@ -155,11 +157,13 @@ HALUCINATE EXPERIENCE:
 -
 
 ===================================================================================================
+===================================================================================================
 
 DISCUSSION:
 
 - 
 
+===================================================================================================
 ===================================================================================================
 
 METHODS:
