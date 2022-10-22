@@ -1,0 +1,194 @@
+TITLE:
+
+Prioritized memory access explains planning and hippocampal replay
+--> Hippocampal replay: Phenomenon observed in rats, mice, cats, monkeys... During sleep or awake rest, replay refers to the re-occurrence of a sequence of cell activations that also occurred during activity, but the replay has a much faster time scale. It may be in the same order, or in reverse. Cases were also found where a sequence of activations occurs before the actual activity, but it is still the same sequence
+
+===================================================================================================
+
+ABSTRACT:
+
+- Animals must evaluate outcomes of candidate choices by accessing memories of relevant experiences
+--> ok
+
+- Here, we propose a normative theory to predict which memories should be accessed at each moment to optimize future decisions
+* Normativ theory: regulate right and wrong conduct
+
+- Using nonlocal “replay” of spatial locations in hippocampus as a window into memory access, we simulate a spatial navigation task where an agent accesses memories of locations sequentially, ordered by utility: how much extra reward would be earned due to the computation enabling better choices
+* Nonlocal "replay": ???
+* Spatial location:  the places saved in the agent memory
+* Hippocampus: this is a component of the brain playing a major role in memory and spatial navigation
+--> We use a replay buffer ordered by utility in the experience
+
+- This prioritization balances two desiderata: the need to evaluate imminent choices, vs. the gain from propagating newly encountered information to predecessor states
+* Desiredata : something wanted
+--> Imminent choice are based on instant reward
+--> ???
+
+- We show that this theory offers a unifying account of a range of hitherto disconnected findings in the place cell literature such as the balance of forward and reverse replay, biases in the replayed content, and effects of experience. 
+* Hitherto : from now on
+* Forward replay: hippocampal replay in normal time
+* Reverse replay: hippocampal replay in reverse time
+--> Unifying of findings in place cell literature
+
+-  Accordingly, various types of nonlocal events during behavior and rest are re-interpreted as instances of a single choice evaluation operation, unifying seemingly disparate proposed functions of replay including planning, learning and consolidation, and whose dysfunction may underlie pathologies like rumination and craving.
+* Nonlocal events: ???
+* Rumination: The process of continuously thinking about the same thoughts is called rumination. A habit of rumination can be dangerous to your mental health
+* Craving: a powerful desire for something
+
+===================================================================================================
+
+INTRODUCTION:
+
+- Planning may involve sequentially retrieving experiences --> serie of possible future situation
+- No planning --> depression / habit
+* Prospective: relating to or effective in the future 
+- We can think about action way before needing to do these actions, we can even predict the action after the first time the agent learned, or rest after learning.
+- If we can predict like that, how the brain chose if we use that, or if we use more recent information? In what order the memories has to be accessed?
+* Offline replay: ...
+- Hippocampal replay plays a role in planning, learning  through credit assignment, memory retrieval, consolidation, coginitive maps...
+- The theory behind which memories are replayed at each time and in which order is missing!
+- Goal of the paper: answer the question above
+- How: DYNA RL architecture
+* DYNA RL architecture: view planning as learning about values from remembered experiences + work on trade-oofs between model-based and model-free
+- We can find the best way to replay, but we don't really understand how the agent find them
+- Experience: we simulate a spatial navigation task in which an agent generates and stores experiences which can be later retrieved.
+- Findings:
+	--> existence and balance between forward and reverse replay
+	--> content of replay
+	--> effects of experience
+- "However, the brain may resort to different biological mechanisms to propagate value along replayed trajectories. The present work aims only to expose the principles governing how such mechanisms should behave."
+
+
+===================================================================================================
+
+RESULTS:
+
+- Action policy --> select action with highest expected value
+- Action value --> expected discounted future reward following the action policy
+- Model-free TD-learning bellman backup
+
+- DYNA-Q is a faster Q-learning, still model-free (we don't know T or R) but it seems like model-based because :
+	- Q-learning algo:
+		--> init Q table
+		--> REPEAT:
+			--> observe s
+			--> execute a, observe s', get r
+			--> update Q with <s,a,s,r>
+	- DYNA-Q algo:
+		--> init Q table
+		--> REPEAT:
+			--> observe s
+			--> execute a, observe s', get r
+			--> update Q with <s,a,s,r>
+			--> LEARN THE MODEL
+			--> REPEAT:
+				--> HALUCINATE EXPERIENCE WITH THE LEARNT MODEL
+				--> update Q with <s,a,s,r>
+- LEARN THE MODEL:
+	- T'[s,a,s'] = 
+	- R'[s,a] = 
+HALUCINATE EXPERIENCE:
+	- s = random
+	- a = random
+	- s' = infer from T[s,a,s']
+	- r = R[s,a]
+- DYNA-Q is way cheaper than Q-learning when halucinating the experience
+
+- Memory: a target state and action + the resulating reward and succesor state
+
+- n-step Bellman backup or "rollout": series of one-step backups using eligibility traces
+- Can do that n-step Bellman backup in reverse (from destination state)
+- Another goal: provide a principled account of when to use MCTS(normal) or Prioritized Sweeping (for reverse)
+- Utility of a Bellman backup: increase in reward at the target state multiplied by the expected number of times the target state will be visited (the product of a gain and a need term)
+	- gain: how much more reward the agent can expect to harvest following any visit to the target state
+	- need: quantifies the number of times the agent is expected to harvest the gain by visiting the target state in the future
+- A backup has no effect <-- zero utility if:
+	<-- high gain(the target state is expected to be visited in the future) & zero need(backup would not impact behavior at that state)
+	<-- high need(backup would greatly impact behavior at that state) & zero gain(state is never expected to be visited again)
+
+- Grid-world maze (check figures)
+- Classic DYNA-Q + small amount of noise added at each reward
+- The agent can access nonlocal memories (before starting or after finishing), ordered by utility
+
+-----------------------------------------------------------
+
+2.1 MEMORY ACCESS AND LEARNING:
+
+- Our first prediction was that prioritized memory access accelerates learning in a spatial navigation task
+- Agent: 
+	- Prioritized order + model-free that learns by direct experience
+	-Simulation drawn at random
+- The prioritized order one wins
+
+-----------------------------------------------------------
+
+2.2 CONTEXT-DEPENDENT BALACNE BETWEEN FORWARD AND REVERSE SEQUENCES:
+
+- In our simulations, we observed that, as in hippocampal recordings, replayed target states typically followed continuous sequences in either forward or reverse order
+- ????
+- Observation:
+	- often happens at the start --> replay driven by the need term --> evaluate future trajectories
+	- often happens at the end --> replay driven by the gain term --> link between behavioral trajectoris and their outcomes 
+
+-----------------------------------------------------------
+
+2.3 STATISTICS OF REPLAYED LOCATIONS: CURRENT POSITION, GOALS, AND PATHS
+
+-
+
+-----------------------------------------------------------
+
+2.4 ASYMMETRIC EFFECT OF PREDICTION ERRORS
+
+-
+
+-----------------------------------------------------------
+
+2.5 EFFECTS OF FAMILIARITY AND SPECIFIC EXPERIENCES
+
+-
+
+-----------------------------------------------------------
+
+2.6 EFFECT OF RPELAY ON CHOICE BEHAVIOR
+
+-
+
+===================================================================================================
+
+DISCUSSION:
+
+- 
+
+===================================================================================================
+
+METHODS:
+
+4.1 MODEL DESCRIPTION
+
+-
+
+4.1.1 GAIN TERM
+
+-
+
+4.1.2 NEED TERM
+
+-
+
+-----------------------------------------------------------
+
+4.2 SIMULATION DETAILS
+
+-
+
+-----------------------------------------------------------
+
+4.3 FORMAL DERIVATION
+
+-
+
+
+
+
+
