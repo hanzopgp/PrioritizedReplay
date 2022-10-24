@@ -27,6 +27,7 @@ ABSTRACT:
 
 - We show that this theory offers a unifying account of a range of hitherto disconnected findings in the place cell literature such as the balance of forward and reverse replay, biases in the replayed content, and effects of experience. 
 * Hitherto : from now on
+* Place cell: their activity increase when the agent is in a certain location in space
 * Forward replay: hippocampal replay in normal time
 * Reverse replay: hippocampal replay in reverse time
 --> Unifying of findings in place cell literature
