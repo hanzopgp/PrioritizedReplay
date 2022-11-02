@@ -125,7 +125,7 @@ HALUCINATE EXPERIENCE:
 
 -----------------------------------------------------------
 
-2.2 CONTEXT-DEPENDENT BALACNE BETWEEN FORWARD AND REVERSE SEQUENCES:
+2.2 CONTEXT-DEPENDENT BALANCE BETWEEN FORWARD AND REVERSE SEQUENCES:
 
 - In our simulations, we observed that, as in hippocampal recordings, replayed target states typically followed continuous sequences in either forward or reverse order
 - ????
