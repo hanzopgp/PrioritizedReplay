@@ -137,25 +137,30 @@ HALUCINATE EXPERIENCE:
 
 2.3 STATISTICS OF REPLAYED LOCATIONS: CURRENT POSITION, GOALS, AND PATHS
 
--
+- Empirical results on the linear track support this prediction: hippocampal events have an overall tendency to reflect a path that begins at the animal’s current location a phenomenon termed “initiation bias”
+- Answers to where backups happens -> near reward/agent
+- Interestingly, locations corresponding to the final turn toward the reward were emphasized even more than locations nearer the reward itself, a consequence of the gain term being higher where there is a greater effect on behavior
 
 -----------------------------------------------------------
 
 2.4 ASYMMETRIC EFFECT OF PREDICTION ERRORS
 
--
+- We have shown that prioritized memory access for action evaluation applied in different conditions may give rise to forward and reverse sequences
+- However, our claim that both forward and reverse replay may arise from the same prioritized operation may seem at odds with the general view that forward and reverse sequences have distinct functions (e.g., planning and learning, respectively)
+- These results not only provide direct support to our theory’s notion of gain, but also illustrate how the notion of planning embodied by our model differs from a narrower, colloquial sense of planning: Evaluating candidate actions by simulation (as in our model) does not just anticipate paths to goals, it can also help agents figure out what not to do.
 
 -----------------------------------------------------------
 
 2.5 EFFECTS OF FAMILIARITY AND SPECIFIC EXPERIENCES
 
--
+- Again, these two effects reflect the effect of experience on the two terms governing priority: while the gain term decreases with exposure (with the gradual reduction in prediction errors), the need term increases as the agent’s trajectory becomes more predictable.
+
 
 -----------------------------------------------------------
 
-2.6 EFFECT OF RPELAY ON CHOICE BEHAVIOR
+2.6 EFFECT OF REPLAY ON CHOICE BEHAVIOR
 
--
+- The preceding simulations demonstrate that a wide range of properties of place cell replay can be predicted from first principles, under the hypothesis that the common goal of replay is to drive reinforcement learning and planning involving the reactivated locations.
 
 ===================================================================================================
 ===================================================================================================
