@@ -202,3 +202,29 @@ METHODS:
 
 
 
+
+
+-----------------------------------------------------------
+
+- Implementer quelques experiences
+- Bien comprendre papier
+- Trouver des critiques / ajouts a faire
+
+Meme si prediction negative --> gain nul --> plus rien a gagner donc sert a rien de faire des replays (l'agent serait donc omniscient ce qui est bizarre)
+Decide de faire replay suivant gain et need (bizarre ca mets du temps quand meme)
+Choisir une ou deux experiences
+Pourquoi pas essayer de scale la solution	
+Comparer d'autres models
+Tester avec des replays plus guidé
+Projet de recherche + que d'limplementation (QUELLE EST LA QUESTION SCIENTIFIUQE)
+
+------------------------------------
+
+- Comprendre dyna-Q (MOI)
+- Comprendre comment sont activé les replays avec le gain et need
+- Regarder le code et decider si on fait python ou matlab
+
+Experience : 
+- comprendre pourquoi forward replay planning et reverse replay learning arrivnet apres l'apprentissage
+- comprendre offline replay + tester combinaison forward/reverse/offline sur different environnement
+- non-local event simulé
